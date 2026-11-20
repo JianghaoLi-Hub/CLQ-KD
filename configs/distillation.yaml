@@ -1,0 +1,56 @@
+# Default distillation settings. Bundled teachers use 80 COCO classes.
+# Custom datasets need teacher_model with the same class count and class order.
+clqkd:
+  teacher_model: weights/yolo11x.pt
+  clqkd_alpha: 5.0
+  clqkd_beta: 0.0
+  clqkd_teacher_temperature: 1.5
+  clqkd_student_temperature: 1.0
+  clqkd_prob_threshold: 0.001
+  clqkd_iou_threshold: 0.3
+# Combination beta scales the original method's native classification term.
+clqkd_combination:
+  clqkd_beta: 1.0
+crosskd:
+  teacher_model: weights/yolo11x.pt
+  beta: 1.0
+  temperature: 1.0
+  cls_weight: 1.0
+  reg_weight: 4.0
+csakd:
+  teacher_model: weights/yolo11n.pt
+  csakd_alpha: 300.0
+  csakd_beta: 10.0
+  kd_batch_mode: full
+cwd:
+  teacher_model: weights/yolo11x.pt
+  kd_weight: 5.0
+  tau: 1.0
+fgd:
+  teacher_model: weights/yolo11x.pt
+  temp: 0.5
+  alpha_fgd: 0.001
+  beta_fgd: 0.0005
+  gamma_fgd: 0.0005
+  lambda_fgd: 0.000005
+gkd:
+  teacher_model: weights/yolo11x.pt
+  kd_weight: 0.125
+  layer_weights: [1.0, 1.0, 1.0]
+mgd:
+  teacher_model: weights/yolo11x.pt
+  mgd_alpha: 0.00002
+  mask_ratio: 0.65
+ost:
+  teacher_model: weights/yolo11x.pt
+  kd_weight: 5.0
+  qk_dim: 128
+  temperature: 1.0
+  threshold: 0.5
+pkd:
+  teacher_model: weights/yolo11x.pt
+  kd_weight: 10.0
+reviewkd:
+  teacher_model: weights/yolo11x.pt
+  kd_weight: 2.0
+  mid_channels: 256
